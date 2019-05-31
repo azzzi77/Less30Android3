@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int DELAY_MILLIS = 3000;
+    public static final int DELAY_MILLIS = 5000;
     String pngFileName = "imageFile.png";
     private int PICK_IMAGE_REQUEST = 1;
     private Handler handler;
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         ) {
             textView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.VISIBLE);
-            //даем пользователю 3 сек на отмену
+            //даем пользователю 5 сек на отмену
+            handler=new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -93,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSuccess() {
         Toast.makeText(this, "converted and save", Toast.LENGTH_SHORT).show();
+        textView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void showError(String message) {
