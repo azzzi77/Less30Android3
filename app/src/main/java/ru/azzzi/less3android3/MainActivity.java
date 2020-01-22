@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == PICK_IMAGE_REQUEST
                 && resultCode == RESULT_OK
                 && data != null
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     if (!stopDid) {
                         File file = new File(getFilesDir(), pngFileName);
-
                         Disposable d = getCompletable(data.getData(), file)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
